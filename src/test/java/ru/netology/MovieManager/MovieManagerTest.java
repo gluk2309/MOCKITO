@@ -100,4 +100,22 @@ public class MovieManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void testOverLimit() {
+        MovieManager manager = new MovieManager(4);
+
+        manager.addMovie("Movie I");
+        manager.addMovie("Movie II");
+        manager.addMovie("Movie III");
+        manager.addMovie("Movie IV");
+        manager.addMovie("Movie V");
+        manager.addMovie("Movie VI");
+
+
+        String[] expected = {"Movie VI", "Movie V", "Movie IV", "Movie III"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
